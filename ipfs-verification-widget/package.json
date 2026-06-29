@@ -5,6 +5,7 @@
   "main": "index.js",
   "files": [
     "index.js",
+    "index.d.ts",
     "README.md"
   ],
   "keywords": [
@@ -14,5 +15,14 @@
     "widget",
     "static-site"
   ],
-  "license": "UNLICENSED"
+  "license": "UNLICENSED",
+  "type": "commonjs",
+  "types": "index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "require": "./index.js",
+      "default": "./index.js"
+    }
+  }
 }

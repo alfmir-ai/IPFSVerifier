@@ -2,18 +2,43 @@
 
 Embeddable Node/CommonJS module that renders an IPFS/Git publication verification footer widget for static sites.
 
+## Install
+
+From a sibling `lochner.tech` checkout during local development:
+
+```sh
+cd /workspace/lochner.tech
+npm install ../IPFSVerifier/ipfs-verification-widget
+```
+
+Or use any absolute/relative path to this package directory:
+
+```sh
+npm install /absolute/path/to/IPFSVerifier/ipfs-verification-widget
+```
+
 ## Usage
 
 ```js
 const { createSharedFooterTemplate } = require('@lochner/ipfs-verification-widget');
 
 const footerHtml = createSharedFooterTemplate(new Date().getFullYear(), {
-  domainName: 'alfmir.ai',
-  ipnsId: 'your-ipns-id',
-  githubRawManifestUrl: 'https://raw.githubusercontent.com/OWNER/REPO/main/ipfs-version.json',
-  githubMainCommitApiUrl: 'https://api.github.com/repos/OWNER/REPO/commits/main',
-  footerCredit: 'Alfmir AI',
+  domainName: 'lochner.tech',
+  ipnsId: 'k2k4r8jw4dtnalpkgklrqeflhsgderg6a8wn5lix7bww1yjemm0rx7ye',
+  githubRawManifestUrl: 'https://raw.githubusercontent.com/nicholelochner/lochner.tech_apparel/main/ipfs-version.json',
+  githubMainCommitApiUrl: 'https://api.github.com/repos/nicholelochner/lochner.tech_apparel/commits/main',
+  footerCredit: 'Lochner Technology · Minneapolis, MN',
 });
+
+// Inject footerHtml into your layout/template near the end of <body>.
+```
+
+For ES module projects, import the CommonJS default export and destructure it:
+
+```js
+import ipfsVerificationWidget from '@lochner/ipfs-verification-widget';
+
+const { createSharedFooterTemplate } = ipfsVerificationWidget;
 ```
 
 The returned HTML includes the widget markup, styles, and browser-side verification script.
